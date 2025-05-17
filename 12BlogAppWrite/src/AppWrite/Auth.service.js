@@ -1,19 +1,19 @@
-import {Client,Account,ID} from 'appwrite';
+import {Client,Account,ID, Role} from 'appwrite';
 import {ConfigEnv} from '../ConfigENV/ConfigEnv'
 
 class AuthService{
     client=new Client();
-    account;
+    Account;
     constructor(){
         this.client
         .setEndpoint(ConfigEnv.appwriteUrl)
         .setProject(ConfigEnv.projectId);
-        this.account = new Account(this.client);
+        this.Account = new Account(this.client);
     }
     //! User SignUp methode
     async createAccount({email,password,name}){
         try {
-            const userAccount=await this.account.create(ID.unique(),email,password,name);
+            const userAccount=await this.Account.create(ID.unique(),email,password,name);
             if(userAccount){
                 //? we call login method here
                 return this.LogIn({email,password});
@@ -28,7 +28,7 @@ class AuthService{
     //! User LogIn methode 
     async LogIn({email,password}){
         try {
-            return await this.account.createEmailPasswordSession(email,password);
+            return await this.Account.createEmailPasswordSession(email,password);
         } catch (error) {
             console.log("AppWrite Aervice :: LogIn :: Error:: ",error);
             throw error;
@@ -37,7 +37,7 @@ class AuthService{
     //! User LogOut methode
     async LogOut(){
         try {
-            return await this.account.deleteSessions();
+            return await this.Account.deleteSessions();
         } catch (error) {
             console.log("AppWrite Aervice :: LogOut :: Error:: ",error);
             throw error;
@@ -47,15 +47,15 @@ class AuthService{
     //!Get Current User
     async GetCurrentUser(){
         try {
-            return await this.account.get()
+            return await this.Account.get()
         } catch (error) {
-               console.log("AppWrite Aervice :: GetCurrentUser :: Error:: ",error);
-            throw error;
+           console.log("AppWrite Aervice :: GetCurrentUser :: Error:: ",error);
+           return null
         }
     }
 
 
 }
-export const authService=new AuthService();
+const authService=new AuthService();
 
-// export default AuthService;
+export default authService;
