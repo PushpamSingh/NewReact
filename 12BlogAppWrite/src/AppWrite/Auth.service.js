@@ -1,4 +1,4 @@
-import {Client,Account,ID, Role} from 'appwrite';
+import {Client,Account,ID} from 'appwrite';
 import {ConfigEnv} from '../ConfigENV/ConfigEnv'
 
 class AuthService{
@@ -21,7 +21,7 @@ class AuthService{
                 return userAccount;
             }
         } catch (error) {
-            console.log("AppWrite Aervice :: createAccount :: Error:: ",error);
+            console.log("AppWrite Service :: createAccount :: Error:: ",error);
             throw error;
         }
     }
@@ -30,7 +30,7 @@ class AuthService{
         try {
             return await this.Account.createEmailPasswordSession(email,password);
         } catch (error) {
-            console.log("AppWrite Aervice :: LogIn :: Error:: ",error);
+            console.log("AppWrite Service :: LogIn :: Error:: ",error);
             throw error;
         }
     }
@@ -39,7 +39,7 @@ class AuthService{
         try {
             return await this.Account.deleteSessions();
         } catch (error) {
-            console.log("AppWrite Aervice :: LogOut :: Error:: ",error);
+            console.log("AppWrite Service :: LogOut :: Error:: ",error);
             throw error;
         }
     }
@@ -47,9 +47,10 @@ class AuthService{
     //!Get Current User
     async GetCurrentUser(){
         try {
-            return await this.Account.get()
+            // return await this.Account.get();
+            return "Pushpam"
         } catch (error) {
-           console.log("AppWrite Aervice :: GetCurrentUser :: Error:: ",error);
+           console.log("AppWrite Service :: GetCurrentUser :: Error:: ",error);
            return null
         }
     }
