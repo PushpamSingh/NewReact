@@ -6,7 +6,8 @@ import { LogoutBtn } from "./LogoutBtn";
 
 export const Header=()=>{
 
-    const authStatus=useSelector((state)=>state.auth.status);
+    const authStatus=useSelector((state)=>state.authReducers.status);
+    
     const navigate=useNavigate();
     const navItem=[
         {

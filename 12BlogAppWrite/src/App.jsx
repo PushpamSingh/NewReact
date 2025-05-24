@@ -21,6 +21,8 @@ function App() {
 
     try {
       const userData=await authService.GetCurrentUser();
+      console.log("userData: ",userData);
+      
       if(userData){
         dispatch(logIn(userData))
       }else{
@@ -39,7 +41,7 @@ function App() {
   
 
   return !loading?(
-    <div className="max-w-screen h-screen bg-slate-400 content-center ">
+    <div className="max-w-screen h-screen bg-slate-300 content-center">
       <div className="w-full flex flex-col justify-center">
       <Header/>
       <main>

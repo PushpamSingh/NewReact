@@ -47,8 +47,7 @@ class AuthService{
     //!Get Current User
     async GetCurrentUser(){
         try {
-            // return await this.Account.get();
-            return "Pushpam"
+            return await this.Account.get();
         } catch (error) {
            console.log("AppWrite Service :: GetCurrentUser :: Error:: ",error);
            return null
