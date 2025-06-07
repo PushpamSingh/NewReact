@@ -2,7 +2,7 @@ export const Button=(
     {
     children,
     type='button',
-    bgcolor='bg-blue-600',
+    bgcolor='bg-green-600',
     textColor='text-white',
     classname="",
     ...props

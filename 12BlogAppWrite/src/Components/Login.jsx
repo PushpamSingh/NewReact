@@ -19,7 +19,7 @@ export const Login=()=>{
             const session=await authService.LogIn(data);
             if(session){
                 const userdata=await authService.GetCurrentUser();
-                if(userdata) dispatch(storelogIn(data))
+                if(userdata) dispatch(storelogIn(userdata))
                 navigate("/")
             }
         } catch (error) {

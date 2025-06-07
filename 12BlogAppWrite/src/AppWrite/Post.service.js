@@ -1,7 +1,7 @@
 import { ConfigEnv } from "../ConfigENV/ConfigEnv";
 import { Client,ID,Storage,Databases, Query, ImageGravity } from "appwrite";
 
-class PostSerive{
+class PostService{
     Client = new Client();
     Databases;
     bucket;
@@ -38,7 +38,7 @@ class PostSerive{
         try {
             return await this.Databases.updateDocument(
                 ConfigEnv.databaseId,
-                ConfigEnv,collectionId,
+                ConfigEnv.collectionId,
                 slug,
                 {
                     title,
@@ -133,8 +133,20 @@ class PostSerive{
             throw error;
         }
     }
+    async deleteFile(fileId){
+        try {
+            // console.log("File Id: ",fileId);
+            return this.bucket.deleteFile(
+                ConfigEnv.bucketId,
+                fileId
+            )
+        } catch (error) {
+            console.log("AppWrite Aervice :: deleteFile :: Error:: ",error);
+            throw error;
+        }
+    }
 
 
 }
 
-export const postSerive=new PostSerive();
+export const postService=new PostService();

@@ -28,12 +28,12 @@ export const Header=()=>{
         {
             name:'AllPost',
             slug:'/all-post',
-            active:!authStatus
+            active:authStatus
         },
         {
             name:'AddPost',
             slug:'/add-post',
-            active:!authStatus
+            active:authStatus
         }
     ]
 

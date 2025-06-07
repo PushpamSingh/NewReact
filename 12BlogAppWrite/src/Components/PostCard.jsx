@@ -1,12 +1,17 @@
 import { Link } from "react-router-dom";
-import { postSerive } from "../AppWrite/Post.service";
+import { postService } from "../AppWrite/Post.service";
 
-export const PostCard=({$id,title,featuredImg})=>{
+export const PostCard=({post})=>{
+    // console.log("Post from PostCard: ",post);
+    
     return (
-        <Link to={`/post/${id}`} className=""> 
+        <Link to={`/post/${post?.$id}`} className=""> 
             <div className="w-full bg-gray-100 rounded-xl p-4">
                 <div className="w-full justify-center mb-4">
-                    <img src={postSerive.getFilePreview(featuredImg)} alt={title} 
+                    <img 
+                    // src={postService.getFilePreview(avatar_url)} 
+                    src="https://www.shutterstock.com/image-vector/blg-creative-minimalist-letter-logo-600nw-2598154019.jpg"
+                    alt={post?.title} 
                      className="rounded-xl"
                     />
 
@@ -14,7 +19,7 @@ export const PostCard=({$id,title,featuredImg})=>{
                 <h1
                 className="text-xl font-bold"
                 >
-                    {title}
+                    {post?.title}
                 </h1>
             </div>
         </Link>

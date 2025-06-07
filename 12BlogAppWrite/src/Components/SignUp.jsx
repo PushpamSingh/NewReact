@@ -1,9 +1,12 @@
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { useDispatch } from "react-redux"
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import authService from "../AppWrite/Auth.service";
 import { logIn as storelogIn } from "../Store/AuthSlice.store";
+import { Logo } from "./Logo";
+import { Input } from "./Input";
+import { Button } from "./Button";
 
 export const SignUp=()=>{
     const dispatch=useDispatch();
@@ -12,12 +15,16 @@ export const SignUp=()=>{
     const [error,setError]=useState("");
 
     const handleSignUp=async(data)=>{
+        // console.log("Data from Signup: ",data);
+        
         setError("");
         try {
             const session=await authService.createAccount(data);
             if(session){
                 const userData=await authService.GetCurrentUser();
-                if(userData) dispatch(storelogIn(data));
+                // console.log("User Data from signup: ",userData);
+                
+                if(userData) dispatch(storelogIn(userData));
                 navigate("/")
             }
         } catch (error) {
@@ -53,7 +60,7 @@ export const SignUp=()=>{
                         label="Full Name: "
                         placeholder="Enter you name"
                         {
-                            ...register("fullname",{
+                            ...register("name",{
                                 required:true
                             })
                         }
