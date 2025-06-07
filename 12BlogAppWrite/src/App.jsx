@@ -5,7 +5,7 @@ import {logIn,logOut} from "./Store/AuthSlice.store.js"
 import {Outlet} from "react-router"
 import { Footer } from "./Components/Footers/Footer.jsx";
 import { Header } from "./Components/Headers/Header.jsx";
-import { RTE } from "./Components/RTE.jsx";
+// import { RTE } from "./Components/RTE.jsx";
 function App() {
   const [loading,setLoading]=useState(true);
   const dispatch=useDispatch();
@@ -22,7 +22,7 @@ function App() {
 
     try {
       const userData=await authService.GetCurrentUser();
-      console.log("userData: ",userData);
+      // console.log("userData: ",userData);
       
       if(userData){
         dispatch(logIn(userData))

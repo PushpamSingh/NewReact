@@ -11,7 +11,7 @@ export const LogoutBtn=()=>{
             await authService.LogOut();
             dispatch(logOut());
         } catch (error) {
-            throw err
+            throw error
         }
     }
     

@@ -76,7 +76,7 @@ class PostService{
                 slug
             )
         } catch (error) {
-             console.log("AppWrite Aervice :: getPost :: Error:: ",error);
+            console.log("AppWrite Aervice :: getPost :: Error:: ",error);
             throw error;
         }
     }
